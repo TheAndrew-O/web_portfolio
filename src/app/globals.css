@@ -26,3 +26,9 @@ body {
     rgb(var(--background-start-rgb));
     font-family: -apple-system, BlinkMacSystemFont, Ubuntu, Cantarell, sans-serif;
 }
+
+.profileImg {
+  height: 80;
+  width: 80;
+  border-radius: 40;
+}
