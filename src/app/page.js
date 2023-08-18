@@ -1,11 +1,27 @@
+'use client'
+
 import Image from 'next/image'
 import {BsFillFileEarmarkPdfFill} from 'react-icons/bs'
 import {FaDocker, FaGithub, FaLinkedin} from 'react-icons/fa6'
-
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { Dialog } from '@headlessui/react'
+import { useParams } from 'next/navigation'
+import Modal from '../../components/modal'
 
 export default function Home() {
+  let [isOpen, setIsOpen] = useState(false)
+  let [imgId, setImgId] = useState("")
+  let { router } = useRouter();
+  const param = useParams()
+
+  useEffect(() => {
+    console.log(router)
+  }, [router])
   return (
     <main className='bg-slate-800 px-10 md:px-20 lg:px-40'>
+      
       <section className='min-h-screen'>
         <nav className='py-10 mb-12 flex justify-between'>
           <h1 className='text-xl font-i'>
@@ -37,13 +53,12 @@ export default function Home() {
           <a href='https://github.com/TheAndrew-O'><FaGithub/></a>
           <a href='https://www.linkedin.com/in/andrewjowens1/'><FaLinkedin/></a>
         </div>
-       <div>
+       <div className='relative mx-auto mt-20 overflow-hidden bg-gradient-to-b from-cyan-400 to-slate-800 rounded-full w-80 h-80'>
        <Image
-          className="relative mx-auto rounded-full mt-20 overflow-hidden"
-          src="/golden_smile.jpg"
+          layout='fill'
+          objectFit='cover'
+          src="/golden_smile_no_bg.png"
           alt="profile"
-          width={180}
-          height={180}
           priority
         />
        </div>
@@ -87,63 +102,259 @@ export default function Home() {
       </section>
       <section>
         <h3 className='text-3xl py-1'>Projects</h3>
-        
+        <h4 className='text-2xl py-1'>Computer Vision / AI</h4>
         <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
-            <div className="basis-1/3 flex-1 ">
-              <Image
-                className="rounded-lg object-cover"
-                width={100}
-                height={100}
-                layout="responsive"
-                src="/autopark.png"
-              />
+            
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/autopark.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Autonomous Parking Simulation
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                width={100}
-                height={100}
-                layout="responsive"
-                src="/rescue.png"
-              />
+            
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/rescue.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Aerial Search and Rescue Simulation
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                width={100}
-                height={100}
-                layout="responsive"
-                src="/screenstash.png"
-              />
+
+
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/next.svg"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Coin Classification
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                width={100}
-                height={100}
-                layout="responsive"
-                src="/notesapp.png"
-              />
+        </div>
+
+        <h4 className='text-2xl py-1'>Web development</h4>
+        <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
+            
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/screenstash.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Screenstash
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                width={100}
-                height={100}
-                layout="responsive"
-                src="/petmergency.png"
-              />
+            
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/notesapp.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  What? ToDO!
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                width={100}
-                height={100}
-                layout="responsive"
-                src="/blendshapes.png"
-              />
+        </div>
+
+
+        <h4 className='text-2xl py-1'>Mobile Development</h4>
+        <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
+            
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/petmergency.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Petmergency
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
+        </div>
+
+
+        <h4 className='text-2xl py-1'>Animation and Graphics</h4>
+        <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
+            
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/blendshapes.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Animated SuperShapes
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
+                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
+                    parking space and the navigation required to safely park there.
+                  </p>
+                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        
+          <button onClick={() =>{setIsOpen(true); setImgId("autopark")}} className='bg-red-600'>Click</button>
+          <Modal isOpen={isOpen} imgId={imgId} onClose={() => setIsOpen(false)}/>
       </section>
     </main>
   )
