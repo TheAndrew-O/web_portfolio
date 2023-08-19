@@ -280,7 +280,7 @@ export default function Home() {
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
                   What?ToDo! is the perfect tool for anyone who needs to keep track of their tasks. 
-                  Its simple and easy-to-use interface gives you a visual representation of your to-do list, so you can focus on what's important.
+                  Its simple and easy-to-use interface gives you a visual representation of your to-do list, so you can focus on what&apos;s important.
                   </p>
                   <a href='https://ohwhattodo.netlify.app/' className='text-blue-600 hover:text-blue-300'>Link</a>
                 </div>
@@ -316,8 +316,8 @@ export default function Home() {
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
                   Petmergency is a mobile app that aims to provide critical first aid information for pets in a concise and convenient manner. 
-                  The application also aims to provide a service that enables you to manage your pet's health on the same device where you manage yours, thus making it just a little bit easier to take care of your dog. 
-                  The target users for this application are dog owners who want to stay informed and keep track of their pet's health.
+                  The application also aims to provide a service that enables you to manage your pet&apos;s health on the same device where you manage yours, thus making it just a little bit easier to take care of your dog. 
+                  The target users for this application are dog owners who want to stay informed and keep track of their pet&apos;s health.
                   </p>
                   <a href='https://github.com/TheAndrew-O/Petmergency' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
                 </div>
