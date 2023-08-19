@@ -1,27 +1,29 @@
 'use client'
 
 import Image from 'next/image'
-import {BsFillFileEarmarkPdfFill} from 'react-icons/bs'
+import {HiMail} from 'react-icons/hi'
 import {FaDocker, FaGithub, FaLinkedin} from 'react-icons/fa6'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { useParams } from 'next/navigation'
-import Modal from '../../components/modal'
+import { Button } from '@mui/material'
+import { Menu } from '@mui/material'
+import { MenuItem } from '@mui/material'
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 
 export default function Home() {
-  let [isOpen, setIsOpen] = useState(false)
-  let [imgId, setImgId] = useState("")
-  let { router } = useRouter();
-  const param = useParams()
+  const [isOpen, setIsOpen] = useState(true)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const [clipState, setClipState] = useState(false)
 
-  useEffect(() => {
-    console.log(router)
-  }, [router])
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    setClipState(false);
+  };
   return (
     <main className='bg-slate-800 px-10 md:px-20 lg:px-40'>
-      
       <section className='min-h-screen'>
         <nav className='py-10 mb-12 flex justify-between'>
           <h1 className='text-xl font-i'>
@@ -30,12 +32,36 @@ export default function Home() {
                 <span className="relative text-white">Andrew</span>
               </span>
           </h1>
-          <ul className='flex items-center'>
-            <li>
-              <a className='flex bg-gradient-to-r from-blue-500 to-cyan-300 text-white px-4 py-2 rounded' href='https://www.linkedin.com/in/andrewjowens1/'>Resume <BsFillFileEarmarkPdfFill className='mt-1 ml-1'/>
-              </a>
-            </li>
-          </ul>
+          <div className='flex items-center'>
+              <Button
+                id="demo-but"
+                aria-controls={open ? 'demo-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                className='flex bg-gradient-to-r from-blue-500 to-cyan-300 text-white px-4 py-2 rounded' 
+                onClick={handleClick}>
+                Contact <HiMail className='ml-1 text-lg'/>
+              </Button>
+              <CopyToClipboard text='andrew.j.owens1@gmail.com' onCopy={() => setClipState(true)}>
+              <Menu
+                id="demo-menu"
+                aria-labelledby="demo-but"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                <MenuItem onClick={handleClose}>andrew.j.owens1@gmail.com</MenuItem>
+              </Menu>
+              </CopyToClipboard>
+          </div>
         </nav>
         <div className='text-center p-10'>
           <h2 className='md:text-6xl text-5xl py-2 text-cyan-400 font-light'>
@@ -107,7 +133,7 @@ export default function Home() {
             
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-slate-300 md:w-20 md:h-20 justify-center'>
                   <Image
                     width={100}
                     height={100}
@@ -123,16 +149,19 @@ export default function Home() {
                     with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
                     parking space and the navigation required to safely park there.
                   </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                  <div className='space-x-2'>
+                    <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
+                    <a href='https://www.youtube.com/watch?v=81Cyr8qw-Uc' className='text-blue-600 hover:text-blue-300'>Video</a>
+                  </div>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
-                  <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                  <ul className='text-gray-900 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Gazebo</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>TensorFlow</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Python</li>
                   </ul>
                 </div>
               </div>
@@ -140,7 +169,7 @@ export default function Home() {
             
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-slate-300 md:w-20 md:h-20 justify-center'>
                   <Image
                     width={100}
                     height={100}
@@ -152,20 +181,19 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
-                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
-                    parking space and the navigation required to safely park there.
+                    A simulation of a fully autonomous search and rescue aerial drone. Implemented using three.js to simulate a 3D the environment within
+                    a web browser. The aerial drone utilizes computer vision techniques to determine the location of the target
+                    and the path needed for evacuation.
                   </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
                 </div>
                 <div className=''>
+                  <a href='https://hub.docker.com/r/owens518/iteration3' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>JavaScript</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Three.js</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>C++</li>
                   </ul>
                 </div>
               </div>
@@ -174,11 +202,11 @@ export default function Home() {
 
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-slate-300 md:w-20 md:h-20 justify-center'>
                   <Image
                     width={100}
                     height={100}
-                    src="/next.svg"
+                    src="/coin.svg"
                   />
                 </div>
                 <div className='text-black my-auto ml-2 text-xl font-medium'>
@@ -186,20 +214,17 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
-                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
-                    parking space and the navigation required to safely park there.
+                    A ML model to recognize and classify the quality of a coin within an image.
                   </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                  <a href='https://github.com/TheAndrew-O/Coin-Detector' className='text-blue-600 hover:text-blue-300'>Link</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Tensorflow</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Google Colab</li>
                   </ul>
                 </div>
               </div>
@@ -211,11 +236,11 @@ export default function Home() {
             
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 md:w-20 md:h-20 justify-center border-black border-2'>
                   <Image
                     width={100}
                     height={100}
-                    src="/screenstash.png"
+                    src="/film.svg"
                   />
                 </div>
                 <div className='text-black my-auto ml-2 text-xl font-medium'>
@@ -223,20 +248,18 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
-                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
-                    parking space and the navigation required to safely park there.
+                  Screen Stash is a user-friendly website that allows you to create a personalized list of movies and TV shows that you want to watch. 
+                  Not only that, it also helps you find out where you can watch them on various streaming services, all in one place.
                   </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                  <a href='https://screenstash.netlify.app/' className='text-blue-600 hover:text-blue-300'>Link</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>TypeScript</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Codehooks (NoSQL)</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Clerk</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Next.js</li>
                   </ul>
                 </div>
               </div>
@@ -244,11 +267,11 @@ export default function Home() {
             
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 md:w-20 md:h-20 justify-center border-black border-2'>
                   <Image
                     width={100}
                     height={100}
-                    src="/notesapp.png"
+                    src="/astronaut-svgrepo-com.svg"
                   />
                 </div>
                 <div className='text-black my-auto ml-2 text-xl font-medium'>
@@ -256,20 +279,18 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
-                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
-                    parking space and the navigation required to safely park there.
+                  What?ToDo! is the perfect tool for anyone who needs to keep track of their tasks. 
+                  Its simple and easy-to-use interface gives you a visual representation of your to-do list, so you can focus on what's important.
                   </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                  <a href='https://ohwhattodo.netlify.app/' className='text-blue-600 hover:text-blue-300'>Link</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>TypeScript</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>NoSQL</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>NextAuth</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Next.js</li>
                   </ul>
                 </div>
               </div>
@@ -282,11 +303,11 @@ export default function Home() {
             
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 md:w-20 md:h-20 justify-center border-black border-2'>
                   <Image
                     width={100}
                     height={100}
-                    src="/petmergency.png"
+                    src="/pet.svg"
                   />
                 </div>
                 <div className='text-black my-auto ml-2 text-xl font-medium'>
@@ -294,20 +315,20 @@ export default function Home() {
                 </div>
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
-                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
-                    parking space and the navigation required to safely park there.
+                  Petmergency is a mobile app that aims to provide critical first aid information for pets in a concise and convenient manner. 
+                  The application also aims to provide a service that enables you to manage your pet's health on the same device where you manage yours, thus making it just a little bit easier to take care of your dog. 
+                  The target users for this application are dog owners who want to stay informed and keep track of their pet's health.
                   </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
+                  <a href='https://github.com/TheAndrew-O/Petmergency' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Android Studio</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Java</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Kotlin</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>SQLite</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Firebase</li>
                   </ul>
                 </div>
               </div>
@@ -320,7 +341,7 @@ export default function Home() {
             
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-red-500 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-slate-300 md:w-20 md:h-20 justify-center'>
                   <Image
                     width={100}
                     height={100}
@@ -330,31 +351,27 @@ export default function Home() {
                 <div className='text-black my-auto ml-2 text-xl font-medium'>
                   Animated SuperShapes
                 </div>
-                <div>
-                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    An algorithm for autonomous perpendicular parking. Implemented using ROS 2 for easier integration
-                    with real-world applications, the algorithm utilizes computer vision techniques in conjucntion with AI to determine the location of an empty
-                    parking space and the navigation required to safely park there.
-                  </p>
-                  <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600'>Link</a>
                 </div>
-                <div className=''>
+                <div className='ml-2'>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    A demonstration of linear interpolation and the blendshapes animation technique utilizing super shapes.
+                  </p>
+                  
+                </div>
+                <div className='ml-2 space-x-2'>
+                  <a href='https://github.com/TheAndrew-O/BlendShapes' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
+                  <a href='https://www.youtube.com/watch?v=cYRFqcOyeJw&t=84s' className='text-blue-600 hover:text-blue-300'>Video</a>
+                </div>
+                <div className='ml-2 mb-1'>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>ROS 2 Foxy</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Gazebo</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>TensorFlow</li>
-                    <li className='bg-red-500 rounded-full px-2 mb-1'>Python</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Java</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Processing</li>
                   </ul>
                 </div>
-              </div>
+              
             </div>
         </div>
-
-        
-          <button onClick={() =>{setIsOpen(true); setImgId("autopark")}} className='bg-red-600'>Click</button>
-          <Modal isOpen={isOpen} imgId={imgId} onClose={() => setIsOpen(false)}/>
       </section>
     </main>
   )
