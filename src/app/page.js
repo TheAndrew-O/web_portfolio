@@ -95,24 +95,25 @@ export default function Home() {
         </div>
         <div className='lg:flex gap-10 justify-center'>
           <div className='text-center shadow-lg p-10 rounded-xl my-10 bg-slate-100 flex-1'>
-            <Image className='mx-auto' src="/react-svgrepo-com.svg" width={100} height={100}/>
-            <h3 className='text-lg font-medium pt-8 pb-2 text-gray-800'>Web and Mobile development</h3>
-            <h4 className='py-4 text-gray-800'>Tools I use</h4>
-            <p className='text-gray-800 py-1'>React</p>
-            <p className='text-gray-800 py-1'>Angular</p>
-            <p className='text-gray-800 py-1'>SQL</p>
-            <p className='text-gray-800 py-1'>NoSQL</p>
-            <p className='text-gray-800 py-1'>Android Studio</p>
+            <Image className='mx-auto' src="/azure-devops.svg" width={100} height={100}/>
+            <h3 className='text-lg font-medium pt-8 pb-2 text-gray-800'>Platforms</h3>
+            <h4 className='py-4 text-gray-800'>Platforms I use</h4>
+            <p className='text-gray-800 py-1'>AWS</p>
+            <p className='text-gray-800 py-1'>Google Cloud</p>
+            <p className='text-gray-800 py-1'>Azure DevOps</p>
+            <p className='text-gray-800 py-1'>GitHub</p>
           </div>
           <div className='text-center shadow-lg p-10 rounded-xl my-10 bg-slate-100 flex-1'>
             <Image className='mx-auto' src="/vs-code-svgrepo-com.svg" width={100} height={100}/>
             <h3 className='text-lg font-medium pt-8 pb-2 text-gray-800'>Languages</h3>
             <h4 className='py-4 text-gray-800'>Programming languages I use</h4>
+            <p className='text-gray-800 py-1'>Bash</p>
             <p className='text-gray-800 py-1'>C/C++</p>
-            <p className='text-gray-800 py-1'>Python</p>
+            <p className='text-gray-800 py-1'>C#</p>
             <p className='text-gray-800 py-1'>Java</p>
             <p className='text-gray-800 py-1'>JavaScript</p>
-            <p className='text-gray-800 py-1'>Ocaml</p>
+            <p className='text-gray-800 py-1'>PowerShell</p>
+            <p className='text-gray-800 py-1'>Python</p>
           </div>
           <div className='text-center shadow-lg p-10 rounded-xl my-10 bg-slate-100 flex-1'>
             <Image className='mx-auto' src="/tensorflow-svgrepo-com.svg" width={100} height={100}/>
@@ -137,6 +138,40 @@ export default function Home() {
                   <Image
                     width={100}
                     height={100}
+                    src="/mlkit.png"
+                  />
+                </div>
+                <div className='text-black my-auto ml-2 text-xl font-medium'>
+                  Augmented Vision for Age-Related Macular Degeneration
+                </div>
+                <div>
+                  <p className='text-md text-black p-2 mx-auto md:text-lg'>
+                    Developed a visualization system that utilizes a smartphone to augment how text is displayed to bypass the loss of central vision due to AMD. 
+                    This system involves enhancing contrast, adjusting text size, and reformatting the text's layout to align with the user's peripheral vision capabilities.
+                  </p>
+                  <div className='space-x-2'>
+                    <a href='https://github.com/TheAndrew-O/LowVisReading' className='text-blue-600 hover:text-blue-300'>Repo</a>
+                  </div>
+                </div>
+                <div className=''>
+                  <p className='text-black'>What I used:</p>
+                  <ul className='text-gray-900 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Java</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>CameraX</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>OpenCV</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>ML Kit</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Android Studio</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
+              <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-slate-300 md:w-20 md:h-20 justify-center'>
+                  <Image
+                    width={100}
+                    height={100}
                     src="/autopark.png"
                   />
                 </div>
@@ -150,7 +185,7 @@ export default function Home() {
                     parking space and the navigation required to safely park there.
                   </p>
                   <div className='space-x-2'>
-                    <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
+                    <a href='https://hub.docker.com/r/owens518/ros2-desktop-vnc' className='text-blue-600 hover:text-blue-300'>Repo</a>
                     <a href='https://www.youtube.com/watch?v=81Cyr8qw-Uc' className='text-blue-600 hover:text-blue-300'>Video</a>
                   </div>
                 </div>
@@ -187,7 +222,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className=''>
-                  <a href='https://hub.docker.com/r/owens518/iteration3' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
+                  <a href='https://hub.docker.com/r/owens518/iteration3' className='text-blue-600 hover:text-blue-300'>Repo</a>
                   <p className='text-black'>What I used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
                     <li className='bg-slate-300 rounded-full px-2 mb-1'>JavaScript</li>
@@ -198,33 +233,43 @@ export default function Home() {
                 </div>
               </div>
             </div>
+        </div>
 
-
+        <h4 className='text-2xl py-1'>Cloud Computing</h4>
+        <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
+            
             <div className="basis-1/4 flex-1 bg-slate-100 rounded-xl">
               <div className='flex flex-col lg:flex-row lg:flex-wrap p-2'>
-                <div className='flex rounded-full overflow-hidden w-12 h-12 bg-slate-300 md:w-20 md:h-20 justify-center'>
+                <div className='flex rounded-full overflow-hidden w-12 h-12 md:w-20 md:h-20 justify-center border-black border-2'>
                   <Image
                     width={100}
                     height={100}
-                    src="/coin.svg"
+                    src="/gcloud.png"
                   />
                 </div>
                 <div className='text-black my-auto ml-2 text-xl font-medium'>
-                  Coin Classification
+                  Incident Mitigation
                 </div>
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
-                    A ML model to recognize and classify the quality of a coin within an image.
+                  This project introduces a set of automation techniques, namely
+automated deployment, automated rollback, and automated monitoring, implemented to mitigate incidents quickly and effectively.
+The core focus of this project lies in assessing the impact of
+these automation techniques on a cloud service&apos;s behavior
+during and after the incidents. Further analysis was then done to determine whether these
+automation strategies contribute to increased system resilience,
+thereby minimizing downtime and enhancing the overall service
+reliability.
                   </p>
-                  <a href='https://github.com/TheAndrew-O/Coin-Detector' className='text-blue-600 hover:text-blue-300'>Link</a>
+                  <a href='/Incident Mitigation.pdf' className='text-blue-600 hover:text-blue-300'>Paper</a>
                 </div>
                 <div className=''>
-                  <p className='text-black'>What I used:</p>
+                  <p className='text-black'>What was used:</p>
                   <ul className='text-gray-600 ml-4 flex flex-wrap space-x-1 md:space-x-3'>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Google Cloud Platform</li>
                     <li className='bg-slate-300 rounded-full px-2 mb-1'>Python</li>
-                    <li className='bg-slate-300 rounded-full px-2 mb-1'>OpenCV</li>
-                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Tensorflow</li>
-                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Google Colab</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Nginx</li>
+                    <li className='bg-slate-300 rounded-full px-2 mb-1'>Docker</li>
                   </ul>
                 </div>
               </div>
@@ -251,7 +296,7 @@ export default function Home() {
                   Screen Stash is a user-friendly website that allows you to create a personalized list of movies and TV shows that you want to watch. 
                   Not only that, it also helps you find out where you can watch them on various streaming services, all in one place.
                   </p>
-                  <a href='https://screenstash.netlify.app/' className='text-blue-600 hover:text-blue-300'>Link</a>
+                  <a href='https://screenstash.netlify.app/' className='text-blue-600 hover:text-blue-300'>Website</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
@@ -282,7 +327,7 @@ export default function Home() {
                   What?ToDo! is the perfect tool for anyone who needs to keep track of their tasks. 
                   Its simple and easy-to-use interface gives you a visual representation of your to-do list, so you can focus on what&apos;s important.
                   </p>
-                  <a href='https://ohwhattodo.netlify.app/' className='text-blue-600 hover:text-blue-300'>Link</a>
+                  <a href='https://ohwhattodo.netlify.app/' className='text-blue-600 hover:text-blue-300'>Website</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
@@ -319,7 +364,7 @@ export default function Home() {
                   The application also aims to provide a service that enables you to manage your pet&apos;s health on the same device where you manage yours, thus making it just a little bit easier to take care of your dog. 
                   The target users for this application are dog owners who want to stay informed and keep track of their pet&apos;s health.
                   </p>
-                  <a href='https://github.com/TheAndrew-O/Petmergency' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
+                  <a href='https://github.com/TheAndrew-O/Petmergency' className='text-blue-600 hover:text-blue-300'>Repo</a>
                 </div>
                 <div className=''>
                   <p className='text-black'>What I used:</p>
@@ -359,7 +404,7 @@ export default function Home() {
                   
                 </div>
                 <div className='ml-2 space-x-2'>
-                  <a href='https://github.com/TheAndrew-O/BlendShapes' className='text-blue-600 hover:text-blue-300'>Project Repo</a>
+                  <a href='https://github.com/TheAndrew-O/BlendShapes' className='text-blue-600 hover:text-blue-300'>Repo</a>
                   <a href='https://www.youtube.com/watch?v=cYRFqcOyeJw&t=84s' className='text-blue-600 hover:text-blue-300'>Video</a>
                 </div>
                 <div className='ml-2 mb-1'>
