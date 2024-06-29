@@ -147,7 +147,7 @@ export default function Home() {
                 <div>
                   <p className='text-md text-black p-2 mx-auto md:text-lg'>
                     Developed a visualization system that utilizes a smartphone to augment how text is displayed to bypass the loss of central vision due to AMD. 
-                    This system involves enhancing contrast, adjusting text size, and reformatting the text's layout to align with the user's peripheral vision capabilities.
+                    This system involves enhancing contrast, adjusting text size, and reformatting the text&apos;s layout to align with the user&apos;s peripheral vision capabilities.
                   </p>
                   <div className='space-x-2'>
                     <a href='https://github.com/TheAndrew-O/LowVisReading' className='text-blue-600 hover:text-blue-300'>Repo</a>
